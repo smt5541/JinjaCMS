@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <title>{{ info.title }}</title>
+</head>
+<body>
+    <h1>{{ info.title }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>Website</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ info.location }}</td>
+                <td><a href="{{ info.website }}">{{ info.website }}</a></td>
+                <td>{{ info.approxDate }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>{{ info.caption }}</p>
+    <table>
+        <tr>
+            <td><img src="data:image/png;base64,{{ front_image }}"></td>
+            <td><img src="data:image/png;base64,{{ back_image }}"></td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -20,4 +20,5 @@ jobs:
 
     steps:
       - uses: actions/deploy-pages@v5
-        artifact_name: generated-site
+        with:
+          artifact_name: generated-site

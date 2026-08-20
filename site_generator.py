@@ -45,9 +45,8 @@ def generate_site():
                 page_file.write(page_template.render(back_image=back_image_base64, front_image=front_image_base64, info=info_json))
                 page_file.flush()
 
-    # TODO: GitHub CI to automatically run this file when a new commit is made, publishing the resulting out directory straight to GitHub Pages!
-    # TODO: Style the template
     # TODO: Homepage with navigation to the sub-pages?
+    # TODO: Style the template
 
 if __name__ == "__main__":
     generate_site()

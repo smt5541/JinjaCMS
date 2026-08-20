@@ -2,6 +2,7 @@ import base64
 import json
 import os
 import shutil
+import sys
 
 from jinja2 import Environment, PackageLoader, select_autoescape
 
@@ -22,13 +23,14 @@ def generate_site():
                 if item_file.is_file():
                     item_files_map[item_file.name] = item_file
             required_files = ["back.png", "front.png", "info.json"]
-            found_required_files_count = 0
             for item_file_name in item_files_map.keys():
                 if item_file_name in required_files:
-                    found_required_files_count += 1
-            if found_required_files_count < len(required_files):
-                print(f"Error parsing page {page}: Missing required file(s)")  # TODO: Extend to actually print what files are missing
-                continue
+                    required_files.remove(item_file_name)
+            if  len(required_files) > 0:
+                required_filenames = ", ".join(required_files)
+                print(f"Error parsing page {page.name}: Missing required file(s) {required_filenames}", file=sys.stderr)
+                exit(1)
+
             back_image_base64 = None
             front_image_base64 = None
             info_json = None

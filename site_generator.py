@@ -1,6 +1,7 @@
 import base64
 import json
 import os
+import shutil
 
 from jinja2 import Environment, PackageLoader, select_autoescape
 
@@ -11,7 +12,9 @@ env = Environment(
 page_template = env.get_template("page.html.jinja")
 
 def generate_site():
-    os.mkdir("out")  # TODO: This will fail if the out directory already exists. Recursively remove out before this line.
+    if os.path.exists("out"):
+        shutil.rmtree("out")
+    os.mkdir("out")
     for page in os.scandir("pages"):
         if page.is_dir():
             item_files_map = {}

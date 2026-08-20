@@ -11,7 +11,7 @@ jobs:
           python-version: '3.12'
       - run: pip install -r requirements.txt
       - run: python3 site_generator.py
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-pages-artifact@v5
         with:
           name: generated-site
           path: out

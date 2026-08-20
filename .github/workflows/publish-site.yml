@@ -1,0 +1,12 @@
+name: publish-site
+run-name: ${{ github.actor }} is publishing the site to GitHub Pages
+on:
+  push:
+    branches:
+      - main
+jobs:
+  publish-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/deploy-pages@v5
+        artifact_name: generated-site
